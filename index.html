@@ -422,7 +422,9 @@
     if (explored) return; explored = true;
     traje.classList.remove("nudge"); $("ghost").classList.add("gone"); $("note").classList.add("gone");
   }
+  let dressTimer;
   function dress(on) {
+    clearTimeout(dressTimer);
     runner.classList.toggle("chic", on);
     traje.classList.toggle("on", on);
     if (on) say("Esporte fino,<br>caprichem!<small>Eu já me arrumei, ó</small>", 0);
@@ -437,9 +439,8 @@
   traje.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") dress(false); });
   traje.addEventListener("click", e => {
     stopNudge();
-    if (e.pointerType === "mouse") { dress(true); showStage(); return; }
-    const on = !runner.classList.contains("chic");
-    dress(on); showStage();
+    dress(true); showStage();
+    dressTimer = setTimeout(() => dress(false), 4000);
   });
   traje.addEventListener("focus", () => { if (!traje.matches(":hover")) dress(true); });
   traje.addEventListener("blur", () => dress(false));
