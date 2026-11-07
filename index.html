@@ -147,7 +147,7 @@
   .count span { font-size: 12px; color: var(--soft); text-transform: uppercase; letter-spacing: .08em; }
 
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; }
-  @media (max-width: 420px) { .cards { grid-template-columns: 1fr; } }
+  
   .card {
     position: relative; display: flex; flex-direction: column; gap: 4px;
     padding: 16px 16px 14px;
@@ -207,9 +207,46 @@
   }
   .note svg { width: 46px; height: 40px; margin-bottom: -18px; }
   .note.gone { opacity: 0; transition: opacity .4s; }
-  @media (max-width: 420px) { .note { right: 6px; } .card.traje { margin-top: 20px; } }
+  
 
   .foot { margin: 0; font-size: 13px; color: var(--soft); }
+  .card.static { cursor: default; box-shadow: 0 4px 0 rgba(22,90,107,.35); border-color: rgba(22,90,107,.45); }
+  .card.static:hover { transform: none; box-shadow: 0 4px 0 rgba(22,90,107,.35); background: var(--paper); }
+
+  /* Phones: fit the whole invite in about one screen */
+  @media (max-width: 879px) {
+    .top { position: absolute; top: env(safe-area-inset-top, 0px); right: 0; left: auto; padding-block: 0; }
+    .top-in { padding-block: 10px; }
+    .party { height: 40px; width: 40px; padding: 0; justify-content: center; }
+    .party .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .party svg { width: 24px; height: 24px; }
+    .page { gap: 0; padding-block: 8px 24px; }
+    .wordmark { width: 64%; margin: 0 auto; padding-top: 6px; gap: 4%; }
+    .wordmark .star { width: 9%; }
+    .scene { aspect-ratio: 1 / .74; margin-top: -1%; }
+    .band { top: 24%; height: 50%; }
+    .seventy { font-size: 72cqw; inset: 3% 0 auto 0; }
+    .runner { width: 45%; left: 40%; }
+    .shadow { left: 40%; width: 26%; }
+    .bubble { width: 42%; top: 6%; font-size: 5cqw; }
+    .details { gap: 12px; padding-top: 14px; }
+    .details h1 { display: none; }
+    .eyebrow { font-size: 11.5px; }
+    .msg { font-size: 14.5px; line-height: 1.45; max-width: none; }
+    .count { gap: 8px; flex-wrap: nowrap; }
+    .count div { flex: 1; min-width: 0; padding: 6px 8px; display: flex; align-items: baseline; justify-content: center; gap: 5px; border-radius: 12px; }
+    .count b { display: inline; font-size: 22px; }
+    .count span { font-size: 11px; }
+    .cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .card { padding: 11px 12px 10px; border-radius: 15px; gap: 2px; }
+    .card .k { font-size: 10.5px; }
+    .card .v { font-size: 21px; }
+    .card .v.sm { font-size: 17px; }
+    .card .sub { font-size: 12.5px; line-height: 1.3; }
+    .card .act { font-size: 12px; margin-top: 4px; }
+    .note { display: none; }
+    .foot { font-size: 12px; text-align: center; }
+  }
 
   canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 30; }
 
@@ -237,7 +274,7 @@
         <rect x="20" y="2.5" width="3" height="3" rx=".6" fill="#165a6b" transform="rotate(25 21.5 4)"/>
         <rect x="27" y="20" width="3" height="3" rx=".6" fill="#a6dd25" transform="rotate(-20 28.5 21.5)"/>
       </svg>
-      Confetes!
+      <span class="lbl">Confetes!</span>
     </button>
   </div>
 </header>
@@ -293,13 +330,11 @@
     </div>
 
     <div class="cards" id="cards">
-      <a class="card" id="cDate" target="_blank" rel="noopener">
+      <div class="card static" id="cDate">
         <span class="k">Quando</span>
         <span class="v">15/11/2026</span>
         <span class="sub">Domingo, feriado</span>
-        <span class="act">Salvar na agenda
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 11 L11 5 M6 5 H11 V10"/></svg></span>
-      </a>
+      </div>
       <button class="card" id="cHora" type="button">
         <span class="k">Horário</span>
         <span class="v">14h</span>
@@ -310,7 +345,7 @@
         <span class="k">Onde</span>
         <span class="v sm">Nau Frutos do Mar</span>
         <span class="sub">Partage Shopping Campina Grande</span>
-        <span class="act">Abrir no Google Maps
+        <span class="act">Abrir no Maps
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 11 L11 5 M6 5 H11 V10"/></svg></span>
       </a>
       <button class="card traje nudge" id="cTraje" type="button">
@@ -325,7 +360,7 @@
       <svg class="ghost" id="ghost" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 L5 19 L9.5 15 L12.5 21.5 L15 20.3 L12 14 L18 14 Z" fill="#fff" stroke="#3b2a20" stroke-width="1.6" stroke-linejoin="round"/></svg>
     </div>
 
-    <p class="foot">Te esperamos lá. Toque em “Confetes!” lá em cima sempre que quiser comemorar de novo.</p>
+    <p class="foot">Te esperamos lá! Toque no confete lá em cima para comemorar de novo.</p>
   </section>
 </main>
 
@@ -338,11 +373,6 @@
   // Links
   const PLACE = "Nau Frutos do Mar, Partage Shopping Campina Grande, Campina Grande - PB";
   $("cLocal").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(PLACE);
-  $("cDate").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-    + "&text=" + encodeURIComponent("Aniversário de 70 anos do Romeu")
-    + "&dates=20261115T170000Z/20261115T210000Z"
-    + "&details=" + encodeURIComponent("Traje: esporte fino. É às 14h, não se atrase!")
-    + "&location=" + encodeURIComponent(PLACE);
 
   // Countdown to 15/11/2026 14:00 (Campina Grande, UTC-3)
   const T = Date.UTC(2026, 10, 15, 17, 0, 0);
@@ -369,9 +399,11 @@
 
   // Make sure the character is visible when something happens to him (phones)
   function showStage() {
-    if (matchMedia("(min-width: 880px)").matches) return;
     const r = runner.getBoundingClientRect();
-    if (r.top < 60 || r.bottom > innerHeight) runner.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    if (r.top < 0 || r.bottom > innerHeight) {
+      const y = Math.max(0, scrollY + r.top - 24);
+      window.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" });
+    }
   }
 
   // Dress code: hover on desktop, tap on phones
@@ -396,9 +428,9 @@
   traje.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") dress(false); });
   traje.addEventListener("click", e => {
     stopNudge();
-    if (e.pointerType === "mouse") { dress(true); return; }
+    if (e.pointerType === "mouse") { dress(true); showStage(); return; }
     const on = !runner.classList.contains("chic");
-    dress(on); if (on) showStage();
+    dress(on); showStage();
   });
   traje.addEventListener("focus", () => { if (!traje.matches(":hover")) dress(true); });
   traje.addEventListener("blur", () => dress(false));
