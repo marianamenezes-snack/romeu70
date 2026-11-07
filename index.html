@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Romeu faz 70 anos! 15/11/2026, 14h, Nau Frutos do Mar – Partage Shopping Campina Grande. Você está convidado.">
+<meta property="og:title" content="Romeu 70 anos – você está convidado!">
+<meta property="og:description" content="15/11/2026 às 14h · Nau Frutos do Mar, Partage Shopping Campina Grande · Traje esporte fino">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://romeu70.vercel.app/">
+<meta property="og:image" content="https://romeu70.vercel.app/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4eddc">
+<style>html,body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Romeu 70</title>
+<link rel="icon" href="romeu.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Lilita+One&family=Lexend:wght@400;500;600&display=swap">
+<style>
+  /* Layout: a party page, not a flyer. Character stage on the left (sticky on desktop), live details on the right as cards you play with. Single committed look from the invite's palette. */
+  :root {
+    --cream: #f4eddc;
+    --paper: #fbf7ee;
+    --teal: #165a6b;
+    --teal-deep: #0f4351;
+    --lime: #a6dd25;
+    --lime-deep: #6f9d0c;
+    --ink: #3b2a20;
+    --soft: #5d7a80;
+    --display: "Lilita One", "Arial Rounded MT Bold", system-ui, sans-serif;
+    --body: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --hand: "Caveat", "Comic Sans MS", cursive;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--cream); color: var(--teal); }
+  body { font-family: var(--body); font-size: 16px; line-height: 1.5; overflow-x: hidden; }
+  html, body { overflow-x: clip; }
+  .stage { overflow-x: clip; overflow-y: visible; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--cream); }
+
+  .gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  /* Top bar */
+  .top { position: relative; z-index: 9; }
+  .top-in { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding-block: 10px; }
+  .brand { font-family: var(--display); font-size: 20px; letter-spacing: .02em; color: var(--teal); }
+  .brand span { color: var(--lime-deep); }
+  .party {
+    position: relative;
+    display: inline-flex; align-items: center; gap: 8px;
+    height: 44px; padding: 0 16px 0 12px;
+    border-radius: 999px; border: 2px solid var(--teal);
+    background: var(--paper); color: var(--teal);
+    font: 600 14px/1 var(--body);
+    cursor: pointer;
+    transition: transform .15s, background-color .15s;
+  }
+  .party:hover { background: var(--lime); transform: rotate(-3deg) scale(1.04); }
+  .party:active { transform: scale(.95); }
+  .party:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: 3px; }
+  .party svg { width: 26px; height: 26px; }
+  .party:hover svg { animation: pop .5s ease; }
+  @keyframes pop { 50% { transform: rotate(-18deg) scale(1.2); } }
+
+  /* Main grid */
+  .page { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 8px; padding-block: 4px 48px; }
+  @media (min-width: 880px) {
+    .page { grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; padding-block: 12px 64px; }
+    .stage { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 72px); }
+  }
+
+  /* Stage */
+  .stage { position: relative; min-width: 0; }
+  .wordmark { position: relative; display: flex; align-items: center; justify-content: center; gap: 3%; padding-top: 4px; }
+  .wordmark img { width: 76%; height: auto; display: block; animation: drop .7s cubic-bezier(.2,1.3,.4,1) both; }
+  .wordmark .star { width: 8%; flex: none; fill: var(--teal); animation: spin 9s linear infinite; }
+  @keyframes drop { from { transform: translateY(-30px) scale(.9); opacity: 0 } to { transform: none; opacity: 1 } }
+  @keyframes spin { to { transform: rotate(360deg) } }
+
+  .scene { position: relative; aspect-ratio: 1 / 1.02; margin-top: -5%; container-type: inline-size; }
+  .band { position: absolute; left: -30%; right: -30%; top: 25%; height: 46%; background: var(--teal); transform: rotate(-4deg); }
+  @media (min-width: 880px) { .band { left: -6%; right: -6%; border-radius: 6px; } }
+  .seventy {
+    position: absolute; inset: 4% 0 auto 0;
+    display: flex; justify-content: center;
+    font-family: var(--display); font-size: 92cqw; line-height: .9; letter-spacing: -.04em;
+    user-select: none; pointer-events: none;
+  }
+  .seventy .s { color: var(--cream); -webkit-text-stroke: 2.2cqw var(--teal); paint-order: stroke fill; }
+  .seventy .z { color: var(--cream); -webkit-text-stroke: 2.2cqw var(--teal); paint-order: stroke fill; }
+
+  .runner {
+    position: absolute; left: 50%; bottom: 0; width: 60%;
+    aspect-ratio: 530 / 823; transform: translateX(-52%);
+    animation: jog .62s ease-in-out infinite alternate;
+    cursor: pointer;
+  }
+  .runner img, .runner svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .runner svg { pointer-events: none; }
+  @keyframes jog { from { translate: 0 0; rotate: -1deg } to { translate: 0 -2.2%; rotate: 1deg } }
+  .runner.shake { animation: shake .5s ease; }
+  @keyframes shake { 20%,60% { rotate: -5deg } 40%,80% { rotate: 5deg } }
+  .shadow { position: absolute; left: 50%; bottom: -1.5%; width: 34%; height: 3.5%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(15,67,81,.28), transparent); animation: shadow .62s ease-in-out infinite alternate; }
+  @keyframes shadow { to { width: 29% } }
+
+  #blazer { opacity: 0; transform-box: fill-box; transform-origin: 50% 40%; transform: scale(.7); transition: opacity .2s, transform .4s cubic-bezier(.2,1.5,.4,1); }
+  .runner.chic #blazer { opacity: 1; transform: none; }
+  .glint { opacity: 0; fill: #fff; }
+  .runner.chic .glint { animation: glint .9s ease-in-out infinite alternate; }
+  .runner.chic .glint:nth-of-type(2) { animation-delay: .3s; }
+  .runner.chic .glint:nth-of-type(3) { animation-delay: .6s; }
+  @keyframes glint { from { opacity: 0; transform: scale(.4) } to { opacity: 1; transform: scale(1) } }
+  .glint { transform-box: fill-box; transform-origin: center; }
+
+  .bubble {
+    position: absolute; right: 0; top: 13%;
+    width: 40%; padding: 3.2cqw 3.4cqw;
+    background: #fff; color: var(--teal);
+    border: .7cqw solid var(--ink); border-radius: 5cqw;
+    font-family: var(--display); font-size: 5.2cqw; line-height: 1.05; text-align: center; text-wrap: balance;
+    box-shadow: 1cqw 1.2cqw 0 rgba(15,67,81,.18);
+    transform-origin: 8% 92%;
+    transform: scale(0) rotate(6deg); opacity: 0;
+    transition: transform .4s cubic-bezier(.2,1.5,.4,1), opacity .2s;
+    z-index: 3; pointer-events: none;
+  }
+  .bubble small { display: block; margin-top: 1cqw; font: 500 3.5cqw/1.25 var(--body); color: var(--ink); }
+  .bubble::before, .bubble::after { content: ""; position: absolute; border-style: solid; }
+  .bubble::before { left: 9%; bottom: -5.4cqw; border-width: 5.4cqw 5cqw 0 0; border-color: var(--ink) transparent transparent transparent; }
+  .bubble::after  { left: calc(9% + .9cqw); bottom: -3.7cqw; border-width: 3.9cqw 3.6cqw 0 0; border-color: #fff transparent transparent transparent; }
+  .bubble.show { transform: scale(1) rotate(2deg); opacity: 1; }
+
+  /* Details */
+  .details { min-width: 0; display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
+  @media (min-width: 880px) { .details { padding-top: 56px; } }
+  .eyebrow { margin: 0; font: 600 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--lime-deep); }
+  h1 { margin: 0; font: 400 clamp(34px, 6vw, 50px)/1.02 var(--display); color: var(--teal); text-wrap: balance; }
+  .msg { margin: 0; font-size: 17px; color: var(--teal-deep); max-width: 38ch; }
+  .msg em { font-style: normal; background: linear-gradient(transparent 60%, rgba(166,221,37,.55) 0); }
+
+  .count { display: flex; gap: 10px; flex-wrap: wrap; }
+  .count div { min-width: 74px; padding: 10px 12px; border-radius: 14px; background: var(--paper); border: 2px solid rgba(22,90,107,.14); text-align: center; }
+  .count b { display: block; font: 400 30px/1 var(--display); color: var(--teal); font-variant-numeric: tabular-nums; }
+  .count span { font-size: 12px; color: var(--soft); text-transform: uppercase; letter-spacing: .08em; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; }
+  @media (max-width: 420px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    position: relative; display: flex; flex-direction: column; gap: 4px;
+    padding: 16px 16px 14px;
+    border-radius: 18px; border: 2px solid var(--teal);
+    background: var(--paper); color: var(--teal);
+    text-decoration: none; text-align: left; font: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--teal);
+    transition: transform .18s, box-shadow .18s, background-color .18s;
+    min-width: 0;
+  }
+  .card:hover, .card.on { transform: translateY(-3px) rotate(-.6deg); box-shadow: 0 7px 0 var(--teal); background: #fff; }
+  .card:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--teal); }
+  .card:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: 3px; }
+  .card .k { font: 600 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--soft); }
+  .card .v { font: 400 24px/1.1 var(--display); color: var(--teal); overflow-wrap: anywhere; }
+  .card .v.sm { font-size: 19px; }
+  .card .sub { font-size: 13.5px; color: var(--teal-deep); }
+  .card .act { margin-top: 6px; display: inline-flex; align-items: center; gap: 6px; font: 600 13px/1.2 var(--body); color: var(--lime-deep); }
+  .card .act svg { width: 15px; height: 15px; transition: transform .2s; }
+  .card:hover .act svg { transform: translate(2px,-2px); }
+
+  .card.traje { background: var(--teal); color: var(--cream); border-color: var(--teal); box-shadow: 0 4px 0 var(--teal-deep); }
+  .card.traje .k { color: var(--lime); }
+  .card.traje .v { color: var(--cream); }
+  .card.traje .act { color: var(--lime); }
+  .card.traje:hover, .card.traje.on { background: var(--teal-deep); box-shadow: 0 7px 0 #0a3038; }
+  .card.traje.nudge { animation: nudge 3s ease-in-out infinite; }
+  @keyframes nudge { 0%,82%,100% { rotate: 0deg } 86% { rotate: -2.5deg } 90% { rotate: 2.5deg } 94% { rotate: -1.5deg } }
+  .card.traje::after {
+    content: ""; position: absolute; inset: -6px; border-radius: 22px; border: 3px dashed var(--lime-deep);
+    opacity: 0; pointer-events: none;
+  }
+  .card.traje.nudge::after { animation: halo 1.6s ease-out infinite; }
+  @keyframes halo { 0% { opacity: .9; inset: -3px } 100% { opacity: 0; inset: -14px } }
+
+  /* Fake cursor gliding to the dress code card */
+  .ghost {
+    position: absolute; width: 30px; height: 30px; z-index: 4; pointer-events: none;
+    right: 22%; bottom: 14%;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
+    animation: glide 3s ease-in-out infinite;
+  }
+  .ghost.gone { display: none; }
+  @keyframes glide {
+    0% { transform: translate(-150px, -120px); opacity: 0 }
+    15% { opacity: 1 }
+    55%, 75% { transform: translate(0, 0); opacity: 1 }
+    62% { transform: translate(0,0) scale(.85) }
+    100% { transform: translate(0, 0); opacity: 0 }
+  }
+  .note {
+    position: absolute; right: -4px; bottom: calc(100% + 8px);
+    display: flex; align-items: flex-end; gap: 2px;
+    font: 700 23px/1 var(--hand); color: var(--lime-deep);
+    transform: rotate(-4deg); pointer-events: none;
+  }
+  .note svg { width: 46px; height: 40px; margin-bottom: -18px; }
+  .note.gone { opacity: 0; transition: opacity .4s; }
+  @media (max-width: 420px) { .note { right: 6px; } .card.traje { margin-top: 20px; } }
+
+  .foot { margin: 0; font-size: 13px; color: var(--soft); }
+
+  canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 30; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .runner, .shadow, .wordmark .star, .wordmark img, .card.traje.nudge, .card.traje.nudge::after, .ghost { animation: none !important; }
+    .ghost { display: none; }
+  }
+</style>
+</head>
+<body>
+
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<header class="top gutter">
+  <div class="top-in">
+    <button class="party" id="party" type="button" aria-label="Soltar confetes de novo">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M5 28 L11 11 L21 21 Z" fill="#a6dd25" stroke="#165a6b" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M8.2 19.5 L13.5 24.8 M9.8 15 L17.5 22.7" stroke="#165a6b" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M17 4 q2 3 -1 6" fill="none" stroke="#ff7a59" stroke-width="2" stroke-linecap="round"/>
+        <path d="M26 15 q-3 -2 -6 1" fill="none" stroke="#165a6b" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="23" cy="7" r="1.8" fill="#ffd23f"/>
+        <circle cx="27.5" cy="11" r="1.4" fill="#ff7a59"/>
+        <rect x="20" y="2.5" width="3" height="3" rx=".6" fill="#165a6b" transform="rotate(25 21.5 4)"/>
+        <rect x="27" y="20" width="3" height="3" rx=".6" fill="#a6dd25" transform="rotate(-20 28.5 21.5)"/>
+      </svg>
+      Confetes!
+    </button>
+  </div>
+</header>
+
+<main class="page gutter">
+  <section class="stage" aria-label="Romeu">
+    <div class="wordmark">
+      <svg class="star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23 15 L40 20 L23 25 L20 40 L17 25 L0 20 L17 15 Z"/></svg>
+      <img src="romeu-titulo.png" alt="Romeu" width="785" height="243">
+      <svg class="star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 L23 15 L40 20 L23 25 L20 40 L17 25 L0 20 L17 15 Z"/></svg>
+    </div>
+    <div class="scene">
+      <div class="band"></div>
+      <div class="seventy" aria-hidden="true"><span class="s">7</span><span class="z">0</span></div>
+      <div class="shadow"></div>
+      <div class="runner" id="runner" title="Oi!">
+        <img src="romeu.png" alt="Romeu desenhado correndo, de boné, camiseta verde e óculos" width="530" height="823">
+        <svg viewBox="0 0 530 823" aria-hidden="true">
+          <g transform="translate(-270 -255)">
+            <g id="blazer" stroke="#3b2a20" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+              <path fill="#22324a" d="M413,629 L497,628 Q523,650 553,639 L629,680 L601,733 L573,718 L572,804 Q500,795 429,787 L468,702 L424,700 Z"/>
+              <path fill="#1a2639" stroke="none" d="M468,702 L429,787 L452,789 L478,712 Z"/>
+              <path fill="#ffffff" d="M497,629 Q523,650 553,640 L529,725 Z"/>
+              <path fill="#ffffff" d="M497,629 L512,660 L522,648 Z M553,640 L540,665 L527,649 Z"/>
+              <path fill="#a6dd25" d="M518,650 L532,650 L535,662 L540,712 L527,726 L514,712 L521,662 Z"/>
+              <path fill="none" d="M518,650 L532,650 L535,662 L521,662 Z"/>
+              <path fill="#2d4160" d="M497,629 L529,725 L508,694 L486,668 L493,642 Z"/>
+              <path fill="#2d4160" d="M553,640 L529,725 L546,695 L566,668 L558,646 Z"/>
+              <circle cx="530" cy="745" r="5" fill="#d9c7a3"/>
+              <circle cx="531" cy="772" r="5" fill="#d9c7a3"/>
+              <path fill="#a6dd25" d="M549,690 L556,676 L563,684 L568,676 L570,692 Z"/>
+              <path fill="none" d="M545,692 L572,694"/>
+            </g>
+            <path class="glint" d="M640,600 l6,16 l16,6 l-16,6 l-6,16 l-6,-16 l-16,-6 l16,-6 Z"/>
+            <path class="glint" d="M392,612 l4,11 l11,4 l-11,4 l-4,11 l-4,-11 l-11,-4 l11,-4 Z"/>
+            <path class="glint" d="M600,790 l4,10 l10,4 l-10,4 l-4,10 l-4,-10 l-10,-4 l10,-4 Z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="bubble" id="bubble" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="details" aria-label="Detalhes da festa">
+    <p class="eyebrow">Você está convidado</p>
+    <h1>Romeu faz 70 e quer você lá</h1>
+    <p class="msg">Viver 70 anos é uma dádiva de Deus! Merece sim ser lembrado. <em>Conto com você nesta comemoração.</em></p>
+
+    <div class="count" id="count" aria-label="Contagem regressiva">
+      <div><b id="cd-d">–</b><span>dias</span></div>
+      <div><b id="cd-h">–</b><span>horas</span></div>
+      <div><b id="cd-m">–</b><span>min</span></div>
+    </div>
+
+    <div class="cards" id="cards">
+      <a class="card" id="cDate" target="_blank" rel="noopener">
+        <span class="k">Quando</span>
+        <span class="v">15/11/2026</span>
+        <span class="sub">Domingo, feriado</span>
+        <span class="act">Salvar na agenda
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 11 L11 5 M6 5 H11 V10"/></svg></span>
+      </a>
+      <button class="card" id="cHora" type="button">
+        <span class="k">Horário</span>
+        <span class="v">14h</span>
+        <span class="sub">Em ponto, viu?</span>
+        <span class="act">Clique e ouça Romeu</span>
+      </button>
+      <a class="card" id="cLocal" target="_blank" rel="noopener">
+        <span class="k">Onde</span>
+        <span class="v sm">Nau Frutos do Mar</span>
+        <span class="sub">Partage Shopping Campina Grande</span>
+        <span class="act">Abrir no Google Maps
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 11 L11 5 M6 5 H11 V10"/></svg></span>
+      </a>
+      <button class="card traje nudge" id="cTraje" type="button">
+        <span class="k">Traje</span>
+        <span class="v">Esporte fino</span>
+        <span class="sub" style="color:var(--cream);opacity:.85">Veja Romeu se arrumar</span>
+        <span class="act" id="trajeAct">Passe o mouse aqui</span>
+        <span class="note" id="note" aria-hidden="true"><span id="noteText">passa o mouse!</span>
+          <svg viewBox="0 0 46 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6 C 22 4, 34 12, 36 30"/><path d="M28 24 L36 32 L41 22"/></svg>
+        </span>
+      </button>
+      <svg class="ghost" id="ghost" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3 L5 19 L9.5 15 L12.5 21.5 L15 20.3 L12 14 L18 14 Z" fill="#fff" stroke="#3b2a20" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </div>
+
+    <p class="foot">Te esperamos lá. Toque em “Confetes!” lá em cima sempre que quiser comemorar de novo.</p>
+  </section>
+</main>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const canHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Links
+  const PLACE = "Nau Frutos do Mar, Partage Shopping Campina Grande, Campina Grande - PB";
+  $("cLocal").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(PLACE);
+  $("cDate").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+    + "&text=" + encodeURIComponent("Aniversário de 70 anos do Romeu")
+    + "&dates=20261115T170000Z/20261115T210000Z"
+    + "&details=" + encodeURIComponent("Traje: esporte fino. É às 14h, não se atrase!")
+    + "&location=" + encodeURIComponent(PLACE);
+
+  // Countdown to 15/11/2026 14:00 (Campina Grande, UTC-3)
+  const T = Date.UTC(2026, 10, 15, 17, 0, 0);
+  function tick() {
+    let ms = T - Date.now();
+    if (ms <= 0) { $("count").innerHTML = '<div style="min-width:auto;padding:10px 16px"><b style="font-size:24px">É hoje!</b></div>'; return; }
+    const d = Math.floor(ms / 864e5); ms -= d * 864e5;
+    const h = Math.floor(ms / 36e5); ms -= h * 36e5;
+    const m = Math.floor(ms / 6e4);
+    $("cd-d").textContent = d; $("cd-h").textContent = h; $("cd-m").textContent = m;
+  }
+  tick(); setInterval(tick, 30000);
+
+  // Speech bubble
+  const bubble = $("bubble"), runner = $("runner");
+  let bt;
+  function say(html, ms = 4200) {
+    clearTimeout(bt);
+    bubble.classList.remove("show"); void bubble.offsetWidth;
+    bubble.innerHTML = html; bubble.classList.add("show");
+    if (ms) bt = setTimeout(() => bubble.classList.remove("show"), ms);
+  }
+  function shake() { runner.classList.remove("shake"); void runner.offsetWidth; runner.classList.add("shake"); setTimeout(() => runner.classList.remove("shake"), 520); }
+
+  // Make sure the character is visible when something happens to him (phones)
+  function showStage() {
+    if (matchMedia("(min-width: 880px)").matches) return;
+    const r = runner.getBoundingClientRect();
+    if (r.top < 60 || r.bottom > innerHeight) runner.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  }
+
+  // Dress code: hover on desktop, tap on phones
+  const traje = $("cTraje");
+  let explored = false;
+  function stopNudge() {
+    if (explored) return; explored = true;
+    traje.classList.remove("nudge"); $("ghost").classList.add("gone"); $("note").classList.add("gone");
+  }
+  function dress(on) {
+    runner.classList.toggle("chic", on);
+    traje.classList.toggle("on", on);
+    if (on) say("Esporte fino,<br>caprichem!<small>Eu já me arrumei, ó</small>", 0);
+    else bubble.classList.remove("show");
+  }
+  if (!canHover) {
+    $("trajeAct").textContent = "Toque aqui";
+    $("noteText").textContent = "toca aqui!";
+    $("ghost").classList.add("gone");
+  }
+  traje.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") { stopNudge(); dress(true); } });
+  traje.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") dress(false); });
+  traje.addEventListener("click", e => {
+    stopNudge();
+    if (e.pointerType === "mouse") { dress(true); return; }
+    const on = !runner.classList.contains("chic");
+    dress(on); if (on) showStage();
+  });
+  traje.addEventListener("focus", () => { if (!traje.matches(":hover")) dress(true); });
+  traje.addEventListener("blur", () => dress(false));
+
+  // Time: the balloon
+  $("cHora").addEventListener("click", () => {
+    dress(false); shake(); showStage();
+    say("É às 14h,<br>não se atrase!<small>Olha que eu chego correndo</small>");
+  });
+
+  runner.addEventListener("click", () => {
+    shake();
+    const lines = ["Que bom que você veio!", "70 anos e ainda correndo!", "Te espero no dia 15!"];
+    say(lines[(Math.random() * lines.length) | 0], 2600);
+  });
+
+  // Welcome line that points people to the dress code card
+  setTimeout(() => {
+    if (explored) return;
+    say(canHover
+      ? "Oi! Passa o mouse no <u>traje</u> pra ver uma coisa<small>Tá ali do lado</small>"
+      : "Oi! Toca no <u>traje</u> pra ver uma coisa<small>Tá aqui embaixo</small>", 6000);
+  }, 1800);
+
+  // Confetti
+  const cv = $("confetti"), ctx = cv.getContext("2d");
+  const COLORS = ["#a6dd25", "#165a6b", "#ffd23f", "#ff7a59", "#5fc4d0", "#ffffff", "#0f4351"];
+  let parts = [], raf = null, dpr = 1;
+  function size() { dpr = Math.min(devicePixelRatio || 1, 2); cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; }
+  size(); addEventListener("resize", size);
+  function burst() {
+    const n = reduce ? 50 : 190, W = innerWidth, H = innerHeight;
+    for (let i = 0; i < n; i++) {
+      const left = i % 2 === 0;
+      parts.push({
+        x: left ? -10 : W + 10, y: H * (0.5 + Math.random() * 0.35),
+        vx: (left ? 1 : -1) * (4 + Math.random() * (W / 90)), vy: -(10 + Math.random() * 12),
+        w: 7 + Math.random() * 7, h: 4 + Math.random() * 6,
+        r: Math.random() * 6.28, vr: (Math.random() - .5) * .35,
+        c: COLORS[(Math.random() * COLORS.length) | 0], round: Math.random() < .22, life: 0
+      });
+    }
+    if (!raf) raf = requestAnimationFrame(draw);
+  }
+  function draw() {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    parts = parts.filter(p => p.y < innerHeight + 30 && p.life < 460);
+    for (const p of parts) {
+      p.life++; p.vy += 0.28; p.vx *= 0.985; p.vy *= 0.985;
+      p.x += p.vx + Math.sin(p.life / 9) * 0.6; p.y += p.vy; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c;
+      if (p.round) { ctx.beginPath(); ctx.arc(0, 0, p.w / 2.4, 0, 6.28); ctx.fill(); }
+      else { ctx.scale(1, Math.cos(p.life / 6)); ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); }
+      ctx.restore();
+    }
+    raf = parts.length ? requestAnimationFrame(draw) : (ctx.clearRect(0, 0, innerWidth, innerHeight), null);
+  }
+  $("party").addEventListener("click", () => { burst(); shake(); });
+
+  setTimeout(burst, 300);
+  if (!reduce) setTimeout(burst, 1200);
+})();
+</script>
+
+</body>
+</html>
